@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+     <meta charset="utf-8">
+     <title>CITY'S CAKE</title>
+
+     <!--script-->
+     <script type="text/javascript" src="cakemenu.js"></script>
+     <script type="text/javascript" src="myscript.js"></script>
+
+     <!--stylesheets-->
+     <link rel="stylesheet" type="text/css" href="style1.css">
+     <link rel="stylesheet" type="text/css" href="style2.css">
+     <style media="screen">
+      #img0{
+        float: left;
+      }
+      #img1{
+        float: left;
+      }
+      #img2{
+        float: none;
+      }
+      #menu img{
+        width: 33.3%;
+      }
+      @keyframes identifier {
+        from{background-color: red;}
+        to{background-color: yellow;}
+      }
+      #footer{
+        animation-name: identifier;
+        animation-duration: 4s;
+      }
+     </style>
+   </head>
+
+
+   <body>
+     <div id="dropdown2">
+       <p id="error_message"></p>
+     </div>
+   <div id="navigation" class="dropdown">
+   <!-- a column of navigation-->
+     <img src="viewlist.png" alt="viewlist" class="viewlist">
+     <div class="dropdown-content">
+       <ul>
+       <li><a href="home.html">HOME</a></li>
+       <li><a href="order.html">ORDER</a></li>
+       <li><a href="design.html">ABOUT US</a></li>
+       <li><a href="">TERMS OF USE</a></li>
+       </ul>
+      </div>
+    </div>
+
+   <header>
+     <h1>CITY'S CAKE</h1>
+   </header>
+
+
+    <div id="menu">
+         <img id="img0" width="300" height="200">
+         <img id="img1" width="300" height="200">
+         <img id="img2" width="300" height="200">
+         <img id="img3" width="300" height="200">
+    </div>
+
+
+    <script>
+       document.getElementById("img0").src = myMenu[0].imagefile;
+       document.getElementById("img0").title = myMenu[0].description;
+       document.getElementById("img0").onclick= function(){askQty(0);}
+       document.getElementById("img0").onmouseover= function(){showTitle(0)};
+
+       document.getElementById("img1").src = myMenu[1].imagefile;
+       document.getElementById("img1").title = myMenu[1].description;
+       document.getElementById("img1").onclick= function(){askQty(1);}
+       document.getElementById("img1").onmouseover= function(){showTitle(1);}
+
+       document.getElementById("img2").src = myMenu[2].imagefile;
+       document.getElementById("img2").title = myMenu[2].description;
+       document.getElementById("img2").onclick= function(){askQty(2);}
+       document.getElementById("img2").onmouseover= function(){showTitle(2);}
+
+       document.getElementById("img3").src = myMenu[3].imagefile;
+       document.getElementById("img3").title = myMenu[3].description;
+       document.getElementById("img3").onclick= function(){askQty(3);}
+       document.getElementById("img3").onmouseover= function(){showTitle(3);}
+
+       function askQty(cake_id){
+         var Qty=prompt("enter your quantity");
+         if(isNaN(Qty)||Qty.trim()==""){
+           alert("This is not a number");
+           askQty(cake_id);
+         }
+         else {
+           var table=document.getElementById("order_table");
+           var row=table.insertRow(1);
+           var cakename=row.insertCell(0);
+           var cakequantity=row.insertCell(1);
+           cakename.innerHTML=myMenu[cake_id].description;
+           cakequantity.innerHTML=Qty;
+           document.getElementById("Total_quantity").value=Number(document.getElementById("Total_quantity").value)+Number(Qty);
+           var c_name=myMenu[cake_id].description;
+           var c_qty=Qty;
+           storage[c_name]=Number(storage[c_name])+Number(c_qty);
+         }
+       }
+    </script>
+
+
+    <div id="body">
+       <div class="OrderInformation">
+         <form action="print.html" method="get" id="form1">
+           <fieldset>
+             <legend>Order Information</legend>
+
+             <label for="Tel.No.">Tel.No.</label>
+             <input type="text" name="Tel.No." id="Tel.No." disabled>
+
+             <label>Pick Up Date</label>
+             <input type="text" id="PickUpDate" disabled><br>
+
+             <label for="Delivery">Delivery</label>
+             <input type="radio" name="Delivery" id="Delivery" disabled>
+             <label for="PickUp">Pick Up</label>
+             <input type="radio" name="Delivery" id="PickUp" disabled checked><br>
+          <!-- method to Delivery-->
+          </fieldset>
+          <button type="submit" value="Print Invoice" id="pi">Print Invoice</button>
+        </form>
+
+
+         <!-- a block of order Information-->
+        <form action="print.html" method="get" id="form2">
+          <table id="order_table">
+            <caption id="cap"></caption>
+            <thead>
+              <tr><th>Cake Description</th><th>Qty</th></tr>
+            </thead>
+
+            <tbody>
+              <tr><td>Total Quantity</td><td><input id="Total_quantity"type="number" name="Total_quantity" value="0"></td></tr>
+            </tbody>
+         </table>
+
+       </form>
+      </div>
+    </div>
+    <script type="text/javascript" src="myscript.js"></script>
+    <script type="text/javascript">
+      document.getElementById("pi").addEventListener("click",function(event){
+        event.preventDefault();
+        alert("preventDefault");
+        var cond_1=document.getElementById("Tel.No.").value;
+        var cond_2=document.getElementById("PickUpDate").value;
+        var error_message="";
+        var success=1;
+        if (cond_1.trim()==""){
+          document.getElementById("error_message").innerHTML+=("Please enter telNo."+"<br>");
+          success=0;
+        }
+        if (isNaN(cond_1)==true){
+          document.getElementById("error_message").innerHTML+=("Please enter numbers"+"<br>");
+          success=0;
+        }
+        if (cond_2==""){
+          document.getElementById("error_message").innerHTML+=("Please enter PickUpDate"+"<br>");
+          success=0;
+        }
+        if (success==1){
+          document.getElementById("form1").submit();
+        }else{
+          displayErrorBox();
+        }
+     });
+     function displayErrorBox(){
+       document.getElementById("dropdown2").style.display="block";
+     }
+    </script>
+
+   <script type="text/javascript" src="myscript.js"></script>
+   <script type="text/javascript">
+     window.localStorage.setItem("Tel.No.",getValue(str,"Tel.No."));
+     window.localStorage.setItem("PickUpDate",getValue(str,"PickUpDate"));
+     window.localStorage.setItem("Delivery",getValue(str,"Delivery"));
+     window.localStorage.setItem("PickUp",getValue(str,"PickUp"));
+     window
+   </script>
+
+      <div id="footer">
+        <!-- a column of footer-->
+          <p>©️CityU 2017 sources of images and text from Wikipedia&courtesy of all-free-download.com</p><br>
+          <a href="home.html">Home</a>
+          <a href="order.html">Order</a>
+          <a href="design.html">About Us</a>
+          <a href="">Terms of Use</a>
+       </div>
+       <!-- Page content ends here-->
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>city's cake </title>
+
+    <script type="text/javascript" src="cakemenu.js"></script>
+    <script type="text/javascript" src="myscript.js"></script>
+
+    <style media="screen">
+    *{
+      background-color: #ffb3b3;
+    }
+    h2{
+      width: 230px;
+      height: 200px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background: url(logo.png)
+    }
+    .OrderInformation{
+      width: 100%;
+    }
+    .header{
+      width: 100%;
+    }
+    .header{
+      width: 100px;
+      height: 250px;
+      background: red;
+      -webkit-transition:width 2s;
+      transition: width 2s;
+    }
+    .header:hover{
+      width: 300px;
+    }
+    </style>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+
+  </head>
+
+
+  <body>
+    <div class="header">
+     <h2>CITY'S CAKE</h2>
+    </div>
+
+
+    <div class="body">
+    <div class="OrderInformation">
+    <form method="get">
+      <label for="Tel.No.">Tel.No.</label>
+      <input type="text" name="Tel.No." id="Tel.No." disabled><br>
+      <label>Pick Up Date</label>
+      <input type="text" id="PickUpDate" disabled><br>
+      <label for="Delivery">Delivery</label>
+      <input type="radio" name="Delivery" id="Delivery" disabled>
+      <label for="PickUp">Pick Up</label>
+      <input type="radio" name="PickUp" id="PickUp" disabled checked><br>
+    </form>
+    <script type="text/javascript">
+      document.getElementById("Tel.No.").value=window.localStorage.getItem("Tel.No.");
+      document.getElementById("PickUpDate").value=window.localStorage.getItem("PickUpDate");
+      document.getElementById("Delivery").value=window.localStorage.getItem("Delivery");
+      document.getElementById("PickUp").value=window.localStorage.getItem("PickUp");
+    </script>
+
+      <table>
+       <thead>
+         <tr><th>Cake Description</th><th>Qty</th><th>Price</th></tr>
+       </thead>
+       <tbody>
+         <tr><td>Buccellator</td><td>1</td><td>128</td></tr>
+         <tr><td>Strawberry</td><td>2</td><td>466</td></tr>
+      </tbody>
+      <tfoot>
+         <tr><td>Total</td><td>3</td><td>594</td></tr>
+      </tfoot>
+      </table>
+      <button type="button" value="Clear Invoice" onclick="localStorage.clear()"></button>
+   </div>
+  </div><!-- a column of body-->
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+     <title>homepage</title>
+
+     <!--stylesheets-->
+     <link rel="stylesheet" type="text/css" href="style1.css">
+     <link rel="stylesheet" type="text/css" href="style2.css">
+     <style media="screen">
+       #adBanner{
+         display: block;
+         margin-top: 150px;
+         padding: 8px;
+         border:solid 2px grey;
+       }
+     </style>
+
+     <!--script-->
+     <script type="text/javascript" src="cakemenu.js"></script>
+   </head>
+
+
+  <body>
+     <!--navigation-->
+     <div id="navigation" class="dropdown">
+       <img src="viewlist.png" alt="viewlist" class="viewlist">
+        <div class="dropdown-content">
+         <ul>
+         <li><a href="home.html">HOME</a></li>
+         <li><a href="order.html">ORDER</a></li>
+         <li><a href="design.html">ABOUT US</a></li>
+         <li><a href="">TERMS OF USE</a></li>
+         </ul>
+        </div>
+      </div>
+
+
+      <!-- a column of header-->
+      <div id="header">
+        <h1>CITY'S CAKE</h1>
+      </div>
+
+
+    <div class="body"><!-- a column of body-->
+      <div id="video"><video id="v" width="520" height="360" autoplay controls>
+      <source src="#" type="video/mp4">
+      <source src="#" type="video/ogg">
+      <h3>Sorry, your browser does not support the video format.</h3>
+      </video>
+    <script type="text/javascript">
+      var x=0;
+      function videoSwitch(x){
+        var v=document.getElementById("v");
+        if (x==0) {
+          s=document.querySelectorAll('#v source');
+          s[0].src="https://courses.cs.cityu.edu.hk/cs2204/chocolate.mp4";
+          s[1].src="https://courses.cs.cityu.edu.hk/cs2204/chocolate.ogg";
+          v.load();
+          v.onended=function(){
+            setTimeout("videoSwitch(1)",5*1000);
+          }
+        }
+        else if(x==1){
+          s=document.querySelectorAll('#v source');
+          s[0].src="https://courses.cs.cityu.edu.hk/cs2204/cakemaking-s.mp4";
+          s[1].src="https://courses.cs.cityu.edu.hk/cs2204/cakemaking-s.ogg";
+          v.load();
+          v.onended=function(){
+            setTimeout("videoSwitch(0)",5*1000);
+          }
+        }
+      }
+      videoSwitch(0);
+    </script>
+    </div>
+
+
+      <div id="order">
+      <!--a block to create an order-->
+         <form action="order.html" method="get" class="form1" name="form1">
+           <fieldset>
+            <legend>Order Information</legend>
+            <!-- title of this form-->
+            <label for="Tel.No.">Tel.No.</label>
+            <input type="text" name="Tel.No."><br>
+            <!-- a block to tyoe in the order number-->
+            <label for="PickUpDate">Pick Up Date</label>
+            <input type="text" name="PickUpDate"><br>
+            <!-- a block to tyoe in the pickup date-->
+            <label for="Delivery">Delivery</label>
+            <input type="radio" name="Delivery">
+            <label for="PickUp">Pick Up</label>
+            <input type="radio" name="Delivery"><br>
+            <!-- method to Delivery-->
+            <label for="submit">
+            <input type="submit" value="Submit"></label>
+            <label for="reset">
+            <input type="reset" value="Clear"></label>
+            <!-- buttons of submit-->
+           </fieldset>
+         </form>
+
+
+        <div id="Information">
+        <!-- a block of slide show-->
+        <img src="#" id="adBanner">
+         <p id="des"></p>
+           <table id="nutritionTable">
+             <caption>Nutrition Information</caption>
+             <thead>
+               <tr><th>Amount per 100g</th><th>%</th></tr>
+             </thead>
+             <tbody>
+               <tr><td id="type1"></td><td id="per1"></td></tr>
+               <tr><td id="type2"></td><td id="per2"></td></tr>
+               <tr><td id="type3"></td><td id="per3"></td></tr>
+               <tr><td id="type4"></td><td id="per4"></td></tr>
+             </tbody>
+             <tfoot>
+               <tr><td>Total may not add to 100%</td><td id="per5"></td></tr>
+             </tfoot>
+          </table>
+
+         </div><!-- a block of slide show-->
+
+      </div><!--a block to create an order-->
+
+    </div><!-- a column of body-->
+
+
+
+      <div id="footer">
+      <!-- a column of footer-->
+        <p>©️CityU 2017 sources of images and text from Wikipedia&courtesy of all-free-download.com</p><br>
+        <a href="home.html">Home</a>
+        <a href="order.html">Order</a>
+        <a href="design.html">About Us</a>
+        <a href="">Terms of Use</a>
+      </div>
+  <!-- Page content ends here-->
+  </body>
+</html>

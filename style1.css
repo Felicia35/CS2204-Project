@@ -1,0 +1,31 @@
+*{
+  background-color: #ffb3b3;
+}
+h1{
+  width: 250px;
+  height: 230px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: url(logo.png)
+}
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  #footer{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  .viewlist{
+    position: fixed;
+  }
+  #dropdown2{
+    display: none;
+  }
